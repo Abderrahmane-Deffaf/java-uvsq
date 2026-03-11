@@ -1,9 +1,7 @@
-
-
 193.51.25.12 ecampus.uvsq.fr
-
 193.51.25.24 pikachu.uvsq.fr
-
 193.51.31.90 www.uvsq.fr
-
 192.168.33.1 hello.uvsq.fr
+192.186.1.2 www.esi.dz
+192.168.1.1 www.estin.dz
+194.185.1.2 tari.estin.dz

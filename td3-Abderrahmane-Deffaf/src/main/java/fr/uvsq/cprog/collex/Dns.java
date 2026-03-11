@@ -71,21 +71,16 @@ public class Dns {
   }
 
   public DnsItem getItem(String partOne) {
-    String ipItem = "";
-    String machineNameItem = "";
-
     for (Map.Entry<String, String> entry : db.entrySet()) {
       String machineName = entry.getValue();
       String ip = entry.getKey();
       if (machineName.equals(partOne)) {
-        machineNameItem = machineName;
-        ipItem = ip;
+        return new DnsItem(machineName, ip);
       } else if (ip.equals(partOne)) {
-        ipItem = ip;
-        machineNameItem = machineName;
+        return new DnsItem(machineName, ip);
       }
     }
-    return new DnsItem(machineNameItem, ipItem);
+    return null;
   }
 
   public DnsItem[] getItems(String domainName) {
@@ -120,7 +115,6 @@ public class Dns {
       BufferedWriter writer =
           new BufferedWriter(new FileWriter("src/main/resources/" + fileName, true));
       writer.write("\n" + ip + " " + name);
-      writer.newLine();
       writer.close();
       return new DnsItem(name, ip);
     } catch (Exception e) {

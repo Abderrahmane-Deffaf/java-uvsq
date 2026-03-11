@@ -10,8 +10,8 @@ public class DnsTUI {
   }
   
   public void nextCommande() {
-    Scanner scanner = new Scanner(System.in) ;
-    String input = "hello" ; 
+    Scanner scanner = new Scanner(System.in);
+    String input = "hello";
     while (!input.equals("exit")) {
       input = scanner.nextLine().trim();
       if (input.startsWith("add")) {
@@ -27,16 +27,24 @@ public class DnsTUI {
       } 
 
       if (input.startsWith("search")) {
-        String query = input.split(" ")[1];
+        String[] parts = input.split(" ");
+        if (parts.length != 2) {
+          System.out.println("Usage: search <nom_machine_ou_adresse_ip>");
+          continue;
+        } 
+        String query = parts[1];
         Commande rechercheCommande = new RechercherItem(this.dns, query);
         Object result = rechercheCommande.execute();
-        if (result instanceof DnsItem) {
-          System.out.println("Machine Name: " + ((DnsItem) result).getName() + ", IP Address: " + ((DnsItem) result).getIp());
-        } 
+        System.out.println(result);
       }
 
       if (input.startsWith("ls -a")) {
-        String domain = input.split(" ")[2];
+        String[] parts = input.split(" ");
+        if (parts.length != 3) {
+          System.out.println("Usage: ls -a <domaine>");
+          continue;
+        }
+        String domain = parts[2];
         Commande rechercheDomaineCommande = new RechercheDomaine(this.dns, domain);
         Object result = rechercheDomaineCommande.execute();
         if (result instanceof DnsItem[]) {
@@ -44,6 +52,8 @@ public class DnsTUI {
           for (DnsItem dnsItem : items) {
             System.out.println(dnsItem.getName() + " " + dnsItem.getIp());
           }
+        } else {
+          System.out.println(result);
         }
       }
     }
