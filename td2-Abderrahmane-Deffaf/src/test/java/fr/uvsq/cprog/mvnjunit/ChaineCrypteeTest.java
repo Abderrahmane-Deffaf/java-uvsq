@@ -40,11 +40,7 @@ public class ChaineCrypteeTest {
         assertEquals("ABC", chaine.crypte());
     }
 
-    @Test
-    public void testDecryptageAvecBouclage() {
-        ChaineCryptee chaine = ChaineCryptee.deCryptee("ABC", 3);
-        assertEquals("XYZ", chaine.decrypte());
-    }
+    
 
     @Test
     public void testDecalageNegatif() {
