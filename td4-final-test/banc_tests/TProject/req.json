@@ -1,0 +1,14 @@
+{
+  "tables": {
+    "users": "users.csv",
+    "orders": "orders.csv"
+  },
+  "plan": {
+    "type": "PROJECT",
+    "columns": ["name", "age"],
+    "input": {
+      "type": "SCAN", "table": "users"
+    }
+  },
+  "output": "results/output.csv"
+}
