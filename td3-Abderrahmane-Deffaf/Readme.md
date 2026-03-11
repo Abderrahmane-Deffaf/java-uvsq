@@ -14,22 +14,22 @@ Ce projet simule un mini serveur DNS en Java 17. Il charge une base texte, valid
 
 ## Lancer le projet
 
+Pour compiler et generer le JAR :
+
+```bash
+mvn clean package
+```
+
 Pour executer la demonstration en lecture seule :
 
 ```bash
-./mvnw exec:java -Dexec.mainClass="fr.uvsq.cprog.collex.App"
+java -jar target/collex-1.0-SNAPSHOT.jar
 ```
 
 Pour lancer la console interactive :
 
 ```bash
-./mvnw exec:java -Dexec.mainClass="fr.uvsq.cprog.collex.App" -Dexec.args="interactive"
-```
-
-Pour tester aussi un ajout persistant dans `db.txt` :
-
-```bash
-./mvnw exec:java -Dexec.mainClass="fr.uvsq.cprog.collex.App" -Dexec.args="add-demo"
+java -jar target/collex-1.0-SNAPSHOT.jar interactive
 ```
 
 ## Ce que montre `App`
